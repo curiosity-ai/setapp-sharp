@@ -1,0 +1,17 @@
+.DS_Store
+**/.DS_Store
+/.idea/
+/.idea/*
+/SetappLib/Setapp.xcframework/
+/SetappLib/Setapp.xcframework/*
+/SetappLib/Setapp.xcframework
+**/project.xcworkspace/xcuserdata/
+**/project.xcworkspace/xcuserdata/*
+**/xcuserdata/
+**/xcuserdata/*
+**/build/
+**/build/*
+**/obj/
+**/obj/*
+**/bin/
+**/bin/*
