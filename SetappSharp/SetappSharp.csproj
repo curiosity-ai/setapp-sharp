@@ -1,16 +1,40 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Resources\" />
+    </ItemGroup>
 
     <ItemGroup>
-        <None Update="Resources\libSetappLib.dylib">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
+      <None Update="Resources\libSetappLib.dylib">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
+
+
+
+    <Target Name="GenerateSomeFiles" BeforeTargets="BeforeBuild">
+<!--        <Exec Command="rm $(MSBuildProjectDirectory)/Resources" />-->
+        <!--        <Message Text="Project File Name1 = $(MSBuildProjectFile)" Importance="high" />-->
+
+    </Target>
+    <Target Name="GenerateSomeFiles" BeforeTargets="BeforeBuild">
+        <Exec Command="xcodebuild -project $(MSBuildProjectDirectory)/../SetappLib/SetappLib.xcodeproj -configuration Release" />
+        <Exec Command="cp $(MSBuildProjectDirectory)/../SetappLib/build/Release/libSetappLib.dylib $(MSBuildProjectDirectory)/Resources" />
+<!--        <Message Text="Project File Name1 = $(MSBuildProjectFile)" Importance="high" />-->
+
+    </Target>
+
+
+<!--    <Target Name="copy to target" AfterTargets="AfterBuild">-->
+<!--        <Message Text="Project File Name2 = $(MSBuildProjectFile)  $(TargetDir)" Importance="high" />-->
+
+<!--        <Copy SourceFiles="$(ProjectDir)/Resources/libSetappLib.dylib" DestinationFolder="$(TargetDir)/Resources/libSetappLib.dylib" ContinueOnError="false" />-->
+<!--    </Target>-->
 
 </Project>

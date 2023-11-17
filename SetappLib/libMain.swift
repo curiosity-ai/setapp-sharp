@@ -2,6 +2,27 @@ import Cocoa
 import Foundation
 import Setapp
 
+public struct SetAppSubscription : Codable  {
+    var isActive: Bool?
+    var expirationDate: Double?
+    var description: String?
+}
+
+@_cdecl("get_subscription")
+public func get_subscription() -> UnsafePointer<CChar> {
+      let sub =   SetappManager.shared.subscription;
+    let s = SetAppSubscription(isActive:sub?.isActive, expirationDate:  sub?.expirationDate?.timeIntervalSince1970,description:sub?.description)
+    
+    do {
+        let jsonData =  try JSONEncoder().encode(s)
+        let jsonString = String(data: jsonData, encoding: .utf8)!
+        return toCString(jsonString);
+    } catch     {
+        
+        return toCString("");
+    }
+}
+
 @_cdecl("showReleaseNotesWindowIfNeeded")
 public func showReleaseNotesWindowIfNeeded() {
     SetappManager.shared.showReleaseNotesWindowIfNeeded();
