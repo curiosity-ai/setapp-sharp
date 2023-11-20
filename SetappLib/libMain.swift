@@ -11,6 +11,7 @@ public struct SetAppSubscription : Codable  {
 @_cdecl("get_subscription")
 public func get_subscription() -> UnsafePointer<CChar> {
     let sub =   SetappManager.shared.subscription;
+    
     let s = SetAppSubscription(isActive:sub?.isActive, expirationDate:  sub?.expirationDate?.timeIntervalSince1970,description:sub?.description)
     
     do {

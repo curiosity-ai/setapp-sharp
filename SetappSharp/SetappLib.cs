@@ -6,7 +6,7 @@ namespace SetappSharp;
 
 public static class Setapp
 {
-    public class DateTimeOffsetJsonConverter : JsonConverter<DateTimeOffset>
+    private class DateTimeOffsetJsonConverter : JsonConverter<DateTimeOffset>
     {
         public override DateTimeOffset Read(
             ref Utf8JsonReader    reader,
@@ -61,23 +61,23 @@ public static class Setapp
         OFF     = 5
     }
 
-    [DllImport("Resources/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr get_subscription();
+    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+   private static extern IntPtr get_subscription();
 
-    [DllImport("Resources/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-    static extern void showReleaseNotesWindowIfNeeded();
+    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void showReleaseNotesWindowIfNeeded();
 
-    [DllImport("Resources/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-    static extern void showReleaseNotesWindow();
+    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    private  static extern void showReleaseNotesWindow();
 
-    [DllImport("Resources/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-    static extern void askUserToShareEmail();
+    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    private   static extern void askUserToShareEmail();
 
-    [DllImport("Resources/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-    static extern void reportUsageEvent(SetappUsageEvent usageEvent);
+    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    private  static extern void reportUsageEvent(SetappUsageEvent usageEvent);
 
-    [DllImport("Resources/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-    static extern void setLogHandle(LogHandleCallback logHandleCallback);
+    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    private  static extern void setLogHandle(LogHandleCallback logHandleCallback);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate void LogHandleCallback(string message, SetappLogLevel logLevel);
