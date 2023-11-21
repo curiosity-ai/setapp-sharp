@@ -40,7 +40,7 @@ steps:
     pushd $TMPDIR
     git clone https://github.com/MacPaw/Setapp-framework
     pushd Setapp-framework
-    mv -Setapp.xcframework $(Build.SourcesDirectory)/SetappLib/
+    mv Setapp.xcframework $(Build.SourcesDirectory)/SetappLib/
     popd
     popd
     ls -hR  $(Build.SourcesDirectory)
