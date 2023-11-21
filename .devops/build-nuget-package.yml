@@ -1,0 +1,72 @@
+variables:
+  targetVersion: yy.M.$(build.buildId)
+
+
+trigger:
+- main
+
+pool:
+  vmImage: macos-latest
+
+steps:
+- checkout: self
+  submodules: true
+  fetchDepth: 10
+
+- script: |
+    echo "Commit message: $(Build.SourceVersionMessage)"
+
+- task: PowerShell@2
+  displayName: 'Create CalVer Version'
+  inputs:
+    targetType: 'inline'
+    script: |
+      $dottedDate = (Get-Date).ToString("yy.M")
+      $buildID = $($env:BUILD_BUILDID) 
+      $newTargetVersion = "$dottedDate.$buildID"
+      Write-Host "##vso[task.setvariable variable=targetVersion;]$newTargetVersion"
+      Write-Host "Updated targetVersion to '$newTargetVersion'"
+
+- task: NuGetToolInstaller@1
+
+- task: UseDotNet@2
+  displayName: 'Use .NET 8.0 sdk'
+  inputs:
+    packageType: sdk
+    version: 8.x
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
+- script: |
+    pushd %temp%
+    git clone https://github.com/MacPaw/Setapp-framework
+    pushd Setapp-framework
+    mv -Setapp.xcframework $(Build.SourcesDirectory)/SetappLib/
+    popd
+    popd
+    ls -hR  $(Build.SourcesDirectory)
+  workingDirectory: $(Build.SourcesDirectory)
+  displayName: 'Download Setapp.xcframework from MacPaw/Setapp-framework'
+
+- script: |
+    ls -hR  $(Build.SourcesDirectory)
+    chmod +x build.sh
+    ./build.sh
+    ls -hR  $(Build.SourcesDirectory)
+  workingDirectory: $(Build.SourcesDirectory)/SetappLib
+  displayName: 'Build native library'
+
+- task: DotNetCoreCLI@2
+  displayName: 'build package'
+  inputs:
+    command: 'build'
+    projects: '$(Build.SourcesDirectory)/SetappSharp/SetappSharp.csproj'
+    arguments: '-c Release /p:Version=$(targetVersion) /p:AssemblyVersion=$(targetVersion)  /p:GeneratePackageOnBuild=true'
+
+- task: NuGetCommand@2
+  displayName: 'push nuget'
+  inputs:
+    command: 'push'
+    packagesToPush: '**/SetappSharp.$(targetVersion).nupkg'
+
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'nuget-curiosity-org'
