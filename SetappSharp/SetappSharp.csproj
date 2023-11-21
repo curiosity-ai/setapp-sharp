@@ -5,6 +5,19 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
+        <OutputType>Library</OutputType>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>0.0.46</Version>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <PackageId>SetappSharp</PackageId>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>Wrapper around the SetApp native library for macOS.</Description>
+        <PackageTags>SetApp</PackageTags>
+        <Authors>Curiosity GmbH</Authors>
+        <Company>Curiosity GmbH</Company>
+        <Copyright>(c) Copyright 2023 Curiosity GmbH - all right reserved</Copyright>        
     </PropertyGroup>
 
     <ItemGroup>
