@@ -21,9 +21,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="runtimes/osx/native/libSetappLib.dylib">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
+      <Content CopyToOutputDirectory="PreserveNewest" Include="runtimes/osx/native/libSetappLib.dylib" Link="librocksdb.dylib" Pack="true" PackagePath="runtimes/osx/native/libSetappLib.dylib" />
     </ItemGroup>
 
     <ItemGroup>
