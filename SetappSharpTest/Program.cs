@@ -28,6 +28,7 @@ Setapp.ReportUsageEvent(Setapp.SetappUsageEvent.SIGN_IN);
 Setapp.ShowReleaseNotesWindowIfNeeded();
 Setapp.ShowReleaseNotesWindow();
 Setapp.AskUserToShareEmail();
+var authCode = await Setapp.RequestAuthorizationCode("clientID----", Setapp.VendorAuthorizationScope.applicationAccess, Setapp.VendorAuthorizationScope.openAI);
 
-
+Console.WriteLine(authCode);
 Console.WriteLine("Done!");
