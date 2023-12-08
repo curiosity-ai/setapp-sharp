@@ -6,6 +6,13 @@ namespace SetappSharp;
 
 public static class Setapp
 {
+
+    public static SetappLogLevel LogLevel
+    {
+        get => getLogLevel();
+        set => setLogLevel(value);
+    }
+
     private class DateTimeOffsetJsonConverter : JsonConverter<DateTimeOffset>
     {
         public override DateTimeOffset Read(
@@ -95,7 +102,7 @@ public static class Setapp
             }
         });
 
-        var delayTask = Task.Run(async () => await Task.Delay(TimeSpan.FromSeconds(30)));
+        var delayTask = Task.Run(async () => await Task.Delay(TimeSpan.FromMinutes(5)));
         var task      = requestAuthorizationCodeTask.Task;
 
         await Task.WhenAny(task, delayTask);
@@ -165,4 +172,11 @@ public static class Setapp
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate void LogHandleCallback(string message, SetappLogLevel logLevel);
+
+    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void setLogLevel(SetappLogLevel logLevel);
+
+    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    private static extern SetappLogLevel getLogLevel();
+
 }

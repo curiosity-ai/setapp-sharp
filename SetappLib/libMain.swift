@@ -116,6 +116,17 @@ private func toCString(_ str : String) -> UnsafePointer<CChar    >{
     return UnsafePointer(strdup(str))
 }
 
+@_cdecl("setLogLevel")
+public func setLogLevel( logLevel: Setapp.SetappLogLevel) {
+    SetappManager.logLevel = logLevel;
+}
+
+@_cdecl("getLogLevel")
+public func setLogLevel() -> Setapp.SetappLogLevel {
+  return  SetappManager.logLevel;
+}
+
+
 public typealias LogHanldeCallback = @convention(c)  (_ message: UnsafePointer<CChar>, _ logLevel: Setapp.SetappLogLevel) -> Void;
 
 @_cdecl("setLogHandle")

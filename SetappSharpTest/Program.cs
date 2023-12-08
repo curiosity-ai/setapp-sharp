@@ -3,6 +3,7 @@ using System.Text.Json;
 using SetappSharp;
 Console.WriteLine("Testing Calls");
 
+Setapp.LogLevel = Setapp.SetappLogLevel.VERBOSE;
 
 Setapp.SetLogHandle((message, level) =>
 {
@@ -23,12 +24,21 @@ Console.WriteLine(JsonSerializer.Serialize(subscription));
 //  Console.WriteLine($"expirationDateTimestamp:\t {subscription.expirationDateTimestamp}");
 //  Console.WriteLine($"description:\t {subscription.description}");
 
-
 Setapp.ReportUsageEvent(Setapp.SetappUsageEvent.SIGN_IN);
 Setapp.ShowReleaseNotesWindowIfNeeded();
 Setapp.ShowReleaseNotesWindow();
 Setapp.AskUserToShareEmail();
-var authCode = await Setapp.RequestAuthorizationCode("clientID----", Setapp.VendorAuthorizationScope.applicationAccess, Setapp.VendorAuthorizationScope.openAI);
 
-Console.WriteLine(authCode);
+try
+{
+    var authCode = await Setapp.RequestAuthorizationCode("clientID----", Setapp.VendorAuthorizationScope.applicationAccess, Setapp.VendorAuthorizationScope.openAI);
+    Console.WriteLine(authCode);
+}
+catch (Exception e)
+{
+    Console.WriteLine(e);
+}
+
+Setapp.ReportUsageEvent(Setapp.SetappUsageEvent.SIGN_OUT);
+
 Console.WriteLine("Done!");

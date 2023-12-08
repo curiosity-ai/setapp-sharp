@@ -11,4 +11,10 @@
         <ProjectReference Include="../SetappSharp/SetappSharp.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="setappPublicKey.pem">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
