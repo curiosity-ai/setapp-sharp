@@ -61,6 +61,8 @@ public static class Setapp
         {
             VendorAuthorizationScope.openAI            => "ai.openai",
             VendorAuthorizationScope.applicationAccess => "application.access",
+            VendorAuthorizationScope.userinfoName      => "userinfo.name",
+            VendorAuthorizationScope.userinfoEmail     => "userinfo.email",
             _                                          => throw new ArgumentOutOfRangeException(nameof(s), s, null)
         }).ToArray());
 
@@ -144,6 +146,8 @@ public static class Setapp
     {
         openAI,
         applicationAccess,
+        userinfoName,
+        userinfoEmail,
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
