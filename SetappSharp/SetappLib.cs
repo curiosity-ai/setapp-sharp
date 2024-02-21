@@ -104,7 +104,7 @@ public static class Setapp
             }
         });
 
-        var delayTask = Task.Run(async () => await Task.Delay(TimeSpan.FromMinutes(5)));
+        var delayTask = Task.Run(async () => await Task.Delay(TimeSpan.FromSeconds(30)));
         var task      = requestAuthorizationCodeTask.Task;
 
         await Task.WhenAny(task, delayTask);
