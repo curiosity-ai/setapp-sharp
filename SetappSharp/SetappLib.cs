@@ -153,34 +153,34 @@ public static class Setapp
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void RequestAuthorizationCodeCallback(IntPtr result);
 
-    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("runtimes/macos/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     private static extern void requestAuthorizationCode(byte[] clientID, byte[] scope, RequestAuthorizationCodeCallback callback);
 
-    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("runtimes/macos/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     private static extern IntPtr get_subscription();
 
-    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("runtimes/macos/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     private static extern void showReleaseNotesWindowIfNeeded();
 
-    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("runtimes/macos/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     private static extern void showReleaseNotesWindow();
 
-    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("runtimes/macos/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     private static extern void askUserToShareEmail();
 
-    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("runtimes/macos/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     private static extern void reportUsageEvent(SetappUsageEvent usageEvent);
 
-    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("runtimes/macos/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     private static extern void setLogHandle(LogHandleCallback logHandleCallback);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate void LogHandleCallback(string message, SetappLogLevel logLevel);
 
-    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("runtimes/macos/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     private static extern void setLogLevel(SetappLogLevel logLevel);
 
-    [DllImport("runtimes/osx/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("runtimes/macos/native/libSetappLib.dylib", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     private static extern SetappLogLevel getLogLevel();
 
 }

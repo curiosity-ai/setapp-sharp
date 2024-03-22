@@ -1,3 +1,3 @@
 xcodebuild -configuration Release
-mkdir -p ../SetappSharp/runtimes/osx/native
-cp ./build/Release/libSetappLib.dylib ../SetappSharp/runtimes/osx/native
+mkdir -p ../SetappSharp/runtimes/macos/native
+cp ./build/Release/libSetappLib.dylib ../SetappSharp/runtimes/macos/native

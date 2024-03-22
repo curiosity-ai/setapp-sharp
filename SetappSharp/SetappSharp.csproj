@@ -21,7 +21,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content CopyToOutputDirectory="PreserveNewest" Include="runtimes/osx/native/libSetappLib.dylib" Link="runtimes/osx/native/libSetappLib.dylib" Pack="true" PackagePath="runtimes/osx/native/libSetappLib.dylib" />
+      <Content CopyToOutputDirectory="PreserveNewest" Include="runtimes/macos/native/libSetappLib.dylib" Link="runtimes/macos/native/libSetappLib.dylib" Pack="true" PackagePath="runtimes/macos/native/libSetappLib.dylib" />
     </ItemGroup>
 
     <ItemGroup>
