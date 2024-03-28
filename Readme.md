@@ -8,4 +8,4 @@
    `xcodebuild -project SetappLib/SetappLib.xcodeproj -configuration Release`
 3. Copy the dylib to the rider project
 
-    ```cp SetappLib/build/Release/libSetappLib.dylib SetappSharp/Resources```
+    ```cp SetappLib/build/Release/libSetappLib.dylib SetappSharp/runtimes/osx/native```
