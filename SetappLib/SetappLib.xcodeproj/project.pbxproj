@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		33152F4A2B06705B00BD710B /* libMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33152F492B06705B00BD710B /* libMain.swift */; };
-		338E97112BB32D8B00826516 /* Setapp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33152F4B2B079ABE00BD710B /* Setapp.xcframework */; };
+		3338627D2BB5A791001B0D29 /* Setapp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33152F4B2B079ABE00BD710B /* Setapp.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				338E97112BB32D8B00826516 /* Setapp.xcframework in Frameworks */,
+				3338627D2BB5A791001B0D29 /* Setapp.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +188,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -247,15 +247,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-force_load",
-					"Setapp.xcframework/macos-arm64_x86_64/libSetapp.a",
-					"-ObjC",
-				);
 				SDKROOT = macosx;
 			};
 			name = Release;
