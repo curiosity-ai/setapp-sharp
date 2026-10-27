@@ -14,7 +14,9 @@ steps:
   fetchDepth: 10
 
 - script: |
-    echo "Commit message: $(Build.SourceVersionMessage)"
+    echo "Commit message: $COMMIT_MESSAGE"
+  env:
+    COMMIT_MESSAGE: $(Build.SourceVersionMessage)
 
 - task: PowerShell@2
   displayName: 'Create CalVer Version'
